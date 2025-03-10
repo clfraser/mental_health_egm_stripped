@@ -249,7 +249,7 @@ reactable(
   fullWidth = FALSE,
   sortable = FALSE,
   defaultExpanded = TRUE,
-  onClick = get_click_data, # Function defined in core functions
+  onClick = get_click_data, # Function defined in EGM functions script
   theme = reactableTheme(backgroundColor = "#BCD9DA"),
   columns = list(
     domain = colDef(name = "Domain"),
@@ -279,7 +279,7 @@ reactable(
               fullWidth = FALSE,
               sortable = FALSE,
               class = "hidden-column-headers", # Use custom CSS in tables.css script. See: https://github.com/glin/reactable/issues/102
-              onClick = get_click_data, # Function defined in core functions
+              onClick = get_click_data, # Function defined in EGM functions script
               columns = list(
                 padding = colDef(name = "",
                                  width = 44),
@@ -342,7 +342,7 @@ observeEvent(input$click_details, {
                  create_nodes_from_df("intervention_exposure_short", "intervention_classification"))
   }
   # Use delay to give filters time to update before dataframe is updated
-  delay(100,
+  delay(300,
         chart_data(reviews_chart %>%
                mutate(outcomes_filter = if(is.null(unlist(input$outcome_tree_selected)) | "Any form of self-injurious thoughts and behaviours" %in% unlist(input$outcome_tree_selected)) TRUE else if_else(outcome_definition %in% unlist(input$outcome_tree_selected), TRUE, FALSE),
                       domains_filter = if(is.null(unlist(input$domains_tree_selected))) TRUE else if_else(subdomain %in% unlist(input$domains_tree_selected), TRUE, FALSE),
