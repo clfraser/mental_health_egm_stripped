@@ -1,15 +1,11 @@
 ####################### Main tab UI #######################
 
-mainTab <- tabPanel(
+mainTab <- fluidPage(
   lang = "en",
-  div(
-    div(class="fa fa-map", 
-        role = "navigation"), "Evidence and gap map"), # wrap in div for screenreader / accessibility purposes 
   value = "main_page", # tab ID
   titlePanel(h1("Self-harm in children and young people evidence and gap map"),
              windowTitle = "Self-harm in children and young people evidence and gap map"),
   useShinyjs(),
-  fluidPage(
     use_cicerone(), # Include Cicerone to give a guide of the page
     actionButton("egm_guide_button", "Click here for a guided tour of the page"),
     linebreaks(2),
@@ -144,4 +140,3 @@ mainTab <- tabPanel(
                              value = "included_reviews"))) # For switching tabs on click
     )
   )# Sidebar layout
-) #Tab panel
