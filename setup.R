@@ -29,9 +29,6 @@ library(ggh4x)
 # Package for relative file references (needed to deploy app) 
 library(here)
 
-# PHS styling packages ----
-library(phsstyles)
-
 # HTML tools
 library(htmltools)
 

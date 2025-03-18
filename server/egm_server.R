@@ -10,13 +10,6 @@ observeEvent(input$egm_guide_button, {
   delay(5, egm_guide$start())
 })
 
-# Switch tab on video link button click
-
-observeEvent(input$video_link_button, {
-  output$text <- renderUI(intro_use_ui)
-  updateTabsetPanel(session, "tabset_navbar", selected = "intro")
-})
-
 ## Render trees for jsTreeR inputs
 output$outcome_tree <- renderJstree({
   jstree(

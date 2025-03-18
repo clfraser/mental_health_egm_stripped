@@ -6,18 +6,15 @@ mainTab <- tabPanel(
     div(class="fa fa-map", 
         role = "navigation"), "Evidence and gap map"), # wrap in div for screenreader / accessibility purposes 
   value = "main_page", # tab ID
-  titlePanel(h1("Evidence and gap map")),
+  titlePanel(h1("Self-harm in children and young people evidence and gap map"),
+             windowTitle = "Self-harm in children and young people evidence and gap map"),
   useShinyjs(),
   fluidPage(
     use_cicerone(), # Include Cicerone to give a guide of the page
     actionButton("egm_guide_button", "Click here for a guided tour of the page"),
     linebreaks(2),
-    actionButton("video_link_button", "Click here to see walkthrough videos"),
     # Set checkbox colour
     tags$head(tags$style("input[type=checkbox] { accent-color: DodgerBlue; }")),
-    ## Page titles
-    titlePanel(
-      "Self-harm in children and young people"),
     ## Inputs
     sidebarLayout(
       sidebarPanel(width = 3,
