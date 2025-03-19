@@ -5,14 +5,18 @@ mainTab <- fluidPage(
   value = "main_page", # tab ID
   titlePanel(h1("Self-harm in children and young people evidence and gap map"),
              windowTitle = "Self-harm in children and young people evidence and gap map"),
-  useShinyjs(),
-    use_cicerone(), # Include Cicerone to give a guide of the page
-    actionButton("egm_guide_button", "Click here for a guided tour of the page"),
-    linebreaks(2),
+  # Add note about the type of evidence that the EGM contains
+  p("This evidence and gap map contains review-level evidence") %>%
+    tagAppendAttributes(class = 'box-evidence-type'),
+  linebreaks(2),
+  useShinyjs(), # Include for some JavaScript functions
+  use_cicerone(), # Include Cicerone to give a guide of the page
+  actionButton("egm_guide_button", "Click here for a guided tour of the page"),
+  linebreaks(2),
     # Set checkbox colour
-    tags$head(tags$style("input[type=checkbox] { accent-color: DodgerBlue; }")),
+  tags$head(tags$style("input[type=checkbox] { accent-color: DodgerBlue; }")),
     ## Inputs
-    sidebarLayout(
+  sidebarLayout(
       sidebarPanel(width = 3,
                    # Set to use Shinyjs and set ID, so that checkboxes can be automatically reset
                    shinyjs::useShinyjs(),

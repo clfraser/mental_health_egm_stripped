@@ -14,8 +14,7 @@ source("setup.R")
 source(file.path("ui/egm_ui.R"), local = TRUE)$value
 
 # UI
-ui <- 
-#secure_app( # For password protection
+ui <-
   
   fluidPage(
 tagList(
@@ -45,19 +44,11 @@ mainTab # UI from egm_ui script
 
 ) # taglist
 ) # ui fluidpage
-#) # Secure app, for password protection
 
 # Server
 
 server <- function(input, output, session) {
 
-  
-  credentials <- readRDS(here("admin/credentials.rds"))
-  
-  res_auth <- secure_server(
-    check_credentials = check_credentials(credentials)
-  )
-  
     # Get guided tour functions
     source(file.path("functions/guided_tours.R"), local = TRUE)$value
 
