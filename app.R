@@ -58,9 +58,7 @@ server <- function(input, output, session) {
     check_credentials = check_credentials(credentials)
   )
   
-    # Get functions
-    source(file.path("functions/core_functions.R"), local = TRUE)$value
-    source(file.path("functions/egm_functions.R"), local = TRUE)$value
+    # Get guided tour functions
     source(file.path("functions/guided_tours.R"), local = TRUE)$value
 
     # Get server content for individual pages

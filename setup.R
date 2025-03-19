@@ -43,8 +43,8 @@ reviews_table <- readRDS(here("data/self-harm_egm_table_data.rds"))
 # Dataframe for glossary list
 glossary_list <- read_xlsx(here("data/Definitions.xlsx"), sheet = "List")
 
-# Load core functions functions ----
-source("functions/core_functions.R")
+# Load EGM functions ----
+source("functions/egm_functions.R")
 
 ## Plotting ----
 # Style of x and y axis
