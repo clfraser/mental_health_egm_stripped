@@ -418,7 +418,7 @@ output$reviews_table <- renderReactable({
       searchable = TRUE,
       resizable = TRUE,
       filterable = TRUE,
-      defaultPageSize = 2,
+      showPageSizeOptions = TRUE,
       defaultColDef = colDef(
         minWidth = 200),
       rowStyle = function(index) {
