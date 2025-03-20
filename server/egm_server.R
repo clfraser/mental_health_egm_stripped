@@ -155,20 +155,9 @@ observeEvent(input$pop_age_defs,
                easyClose = TRUE))})
 
 # All other definitions
-observeEvent(input$pop_characteristics_defs,{
-  defs_filtered <- glossary_list %>%
-    filter(Topic == "Population characteristics") %>%
-    select(-Topic)
+
   
-  output$defs_table <- renderTable(defs_filtered)
-  
-  showModal(modalDialog(
-    title = "Outcome definitions",
-    tableOutput("defs_table"),
-    easyClose = TRUE))
-})
-  
-  #defs_topic_modal("Population characteristics")})
+observeEvent(input$pop_characteristics_defs, {defs_topic_modal("Population characteristics")})
 observeEvent(input$study_setting_defs, {defs_topic_modal("Study setting")})
 observeEvent(input$int_exposure_defs, {defs_topic_modal("Interventions and risk/protective factors")})
 observeEvent(input$synth_type_defs, {defs_topic_modal("Type of synthesis")})
