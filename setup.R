@@ -43,30 +43,6 @@ reviews_table <- readRDS(here("data/self-harm_egm_table_data.rds"))
 # Dataframe for glossary list
 glossary_list <- read_xlsx(here("data/Definitions.xlsx"), sheet = "List")
 
-# Load EGM functions ----
-source("functions/egm_functions.R")
-
-## Plotting ----
-# Style of x and y axis
-xaxis_plots <- list(title = FALSE, tickfont = list(size=14), titlefont = list(size=14),
-                    showline = TRUE, fixedrange=TRUE)
-
-yaxis_plots <- list(title = FALSE, rangemode="tozero", fixedrange=TRUE, size = 4,
-                    tickfont = list(size=14), titlefont = list(size=14))
-
-# Buttons to remove from plotly plots
-bttn_remove <-  list('select2d', 'lasso2d', 'zoomIn2d', 'zoomOut2d',
-                     'autoScale2d',   'toggleSpikelines',  'hoverCompareCartesian',
-                     'hoverClosestCartesian')
-
-# Home list for introduction tab
-
-home_list<- c("About"= "about",
-              "Using the dashboard"= "use",
-              "Accessibility"= "accessibility",
-              "Last updated" = "last_updated",
-              "Contact us"= "contact")
-
 # Set navy colour
 
 navy <- "#010068"

@@ -51,6 +51,9 @@ server <- function(input, output, session) {
 
     # Get guided tour functions
     source(file.path("functions/guided_tours.R"), local = TRUE)$value
+  
+    # Get EGM functions ----
+    source(file.path("functions/egm_functions.R"), local = TRUE)$value
 
     # Get server content for individual pages
     source(file.path("server/egm_server.R"), local = TRUE)$value
