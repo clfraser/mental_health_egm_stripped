@@ -48,5 +48,7 @@ glossary_list <- read_xlsx(here("data/Definitions.xlsx"), sheet = "List")
 navy <- "#010068"
 
 # Get Cicerone functions
-
 source(file.path("functions/guided_tours.R"), local = TRUE)$value
+
+# Get core functions
+source(file.path("functions/core_functions.R"), local = TRUE)$value

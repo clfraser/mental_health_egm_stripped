@@ -1,6 +1,3 @@
-# Add n linebreaks
-linebreaks <- function(n){HTML(strrep(br(), n))}
-
 # Remove warnings from icons 
 icon_no_warning_fn = function(icon_name) {
   icon(icon_name, verify_fa=FALSE)
@@ -77,12 +74,6 @@ csvDownloadButton <- function(id, filename = "data.csv", label = "Download as CS
     tagList(icon("download"), label),
     onclick = sprintf("Reactable.downloadDataCSV('%s', '%s')", id, filename)
   )
-}
-
-# Show a navy navigation spinner
-
-withNavySpinner <- function(out){
-  withSpinner(out, color = navy)
 }
 
 ####################### Get click data for when chart is clicked on #######################
