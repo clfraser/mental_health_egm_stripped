@@ -1,39 +1,15 @@
-# Remove warnings from icons 
-icon_no_warning_fn = function(icon_name) {
-  icon(icon_name, verify_fa=FALSE)
-}
+####################### Get click data for when chart is clicked on #######################
 
-# Generic data table
-make_table <- function(input_data_table,
-                       rows_to_display = 20
-){
-  
-  # Take out underscores in column names for display purposes
-  table_colnames  <-  gsub("_", " ", colnames(input_data_table))
-  
-  dt <- DT::datatable(input_data_table, style = 'bootstrap',
-                      class = 'table-bordered table-condensed',
-                      rownames = FALSE,
-                      filter="top",
-                      colnames = table_colnames,
-                      options = list(pageLength = rows_to_display,
-                                     scrollX = FALSE,
-                                     scrollY = FALSE,
-                                     dom = 'pftl',
-                                     autoWidth = TRUE,
-                                     # style header
-                                     initComplete = htmlwidgets::JS(
-                                       "function(settings, json) {",
-                                       "$(this.api().table().header()).css({'background-color': '#C5C3DA', 'color': '#3F3685'});",
-                                       "$(this.api().table().row().index()).css({'background-color': '#C5C3DA', 'color': '#3F3685'});",
-                                       "}")))
-  
-  
-  return(dt)
-}
-
-
-
+get_click_data <- JS("function(rowInfo, column) {
+        // Don't handle click events in the domain or subdomain columns
+    if (column.id === 'domain' || column.id === 'subdomain') {
+      return
+    }
+    // Send the click event to Shiny, which will be available in input$click_details
+    if (window.Shiny) {
+      Shiny.setInputValue('click_details', { domain: rowInfo.values.domain, subdomain: rowInfo.values.subdomain, outcome_and_type: column.id }, { priority: 'event' })
+    }
+  }")
 
 ################### Create definition modals #########################
 
@@ -67,27 +43,6 @@ defs_term_modal <- function(term){
   ))
 }
 
-# CSV download button for table
-
-csvDownloadButton <- function(id, filename = "data.csv", label = "Download as CSV") {
-  tags$button(
-    tagList(icon("download"), label),
-    onclick = sprintf("Reactable.downloadDataCSV('%s', '%s')", id, filename)
-  )
-}
-
-####################### Get click data for when chart is clicked on #######################
-
-get_click_data <- JS("function(rowInfo, column) {
-        // Don't handle click events in the domain or subdomain columns
-    if (column.id === 'domain' || column.id === 'subdomain') {
-      return
-    }
-    // Send the click event to Shiny, which will be available in input$click_details
-    if (window.Shiny) {
-      Shiny.setInputValue('click_details', { domain: rowInfo.values.domain, subdomain: rowInfo.values.subdomain, outcome_and_type: column.id }, { priority: 'event' })
-    }
-  }")
 
 ####################### jsTreeR for hierarchical checkboxes #######################
 
